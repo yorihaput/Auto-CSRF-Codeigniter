@@ -1,6 +1,6 @@
 /*
  * auto-csrf.js
- * version: 2.0.1
+ * version: 2.0.2
  * author: Yori Hadi Putra <yori.haput@gmail.com>
  * license: MIT
  * https://github.com/yorihaput/Auto-CSRF-Codeigniter
@@ -58,8 +58,8 @@
         }
     }, false);
 
-    let _fetch = this.fetch;
-    this.fetch = (input, init = {}) => {
+    let _fetch = window.fetch;
+    window.fetch = (input, init = {}) => {
         if (init.headers["Content-Type"] && init.headers["Content-Type"] == "application/json") {
             if (init.method && init.method.toLowerCase() == 'post') {
                 try {
