@@ -60,7 +60,7 @@
 
     let _fetch = window.fetch;
     window.fetch = (input, init = {}) => {
-        if (init.headers["Content-Type"] && init.headers["Content-Type"] == "application/json") {
+        if (init.headers && init.headers["Content-Type"] && init.headers["Content-Type"] == "application/json") {
             if (init.method && init.method.toLowerCase() == 'post') {
                 try {
                     let _body = JSON.parse(init.body);
