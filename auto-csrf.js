@@ -1,6 +1,6 @@
 /*
  * auto-csrf.js
- * version: 2.0.3
+ * version: 2.0.4
  * author: Yori Hadi Putra <yori.haput@gmail.com>
  * license: MIT
  * https://github.com/yorihaput/Auto-CSRF-Codeigniter
@@ -13,7 +13,9 @@
         if (_r.jQuery !== undefined) {
             _af(_r.csrf_name, _r.csrf_value, _r.jQuery.ajaxPrefilter);
             _r.jQuery(document).ajaxComplete(function (e, x, s) {
-                localStorage.setItem(_r.csrf_name, x.getResponseHeader('resp-hash'));
+                if (x.getResponseHeader('resp-hash')) {
+                    localStorage.setItem(_r.csrf_name, x.getResponseHeader('resp-hash'));
+                }
             });
         }
         _ff(_r.csrf_name, _r.csrf_value);
